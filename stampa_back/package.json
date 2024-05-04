@@ -1,0 +1,21 @@
+{
+  "name": "stampa_back",
+  "version": "1.0.0",
+  "description": "Backend for photo upload web app",
+  "main": "main.ts",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon main.ts"
+  },
+  "author": "Uros Stankovic",
+  "license": "Proprietary",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
