@@ -1,5 +1,5 @@
 import multer, { FileFilterCallback } from "multer"
-import { isDevelopmentMode } from "./helpers"
+import { isDevelopmentMode, isTestEnv } from "./helpers"
 import { Request, Response } from "express"
 import sharp from "sharp"
 import { RequestError } from "./errors"
@@ -21,7 +21,7 @@ function imageFileFitler(_req: Request, file: Express.Multer.File, callback: Fil
 
 const multerStorage = multer.diskStorage({
     destination: (_req, _file, callback) => {
-        const uploadFolder = isDevelopmentMode() ? 
+        const uploadFolder = isDevelopmentMode() || isTestEnv() ? 
             './uploads/' :
             './../public_html/uploads'
         callback(null, uploadFolder)
