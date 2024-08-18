@@ -39,11 +39,11 @@ export class DBAccessUserImpl extends DBAccessUser {
         }
 
         const { username, name, surname, street, streetnumber, city, zip, phone } = response[0]
-        return { userName: username, name, surname, address: { street, streetNumber: streetnumber, city, zip }, phone }
+        return { username, name, surname, address: { street, streetNumber: streetnumber, city, zip }, phone }
     }
 
     async addUser(user: UserWithCredentials): Promise<void> {
-        if (await this.userExists(user.userName)) {
+        if (await this.userExists(user.username)) {
             throw new UserAlreadyExistsError()
         }
 
@@ -51,7 +51,7 @@ export class DBAccessUserImpl extends DBAccessUser {
         const response = await knexAccess
             .table(this.userTable)
             .insert({
-                username: user.userName,
+                username: user.username,
                 password: passwordHash,
                 name: user.name,
                 surname: user.surname,
@@ -88,7 +88,7 @@ export class DBAccessUserImpl extends DBAccessUser {
         }
 
         const { username, name, surname, street, streetnumber, city, zip, phone } = response[0]
-        return { userName: username, name, surname, address: { street, streetNumber: streetnumber, city, zip }, phone }
+        return { username, name, surname, address: { street, streetNumber: streetnumber, city, zip }, phone }
     }
 
     async userExists(userName: string): Promise<boolean> {

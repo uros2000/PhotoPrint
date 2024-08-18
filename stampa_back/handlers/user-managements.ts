@@ -22,7 +22,7 @@ export async function userLoginHandler(request: Request, response: Response) {
             throw new Error("Private key for JWT token is not defined")
         }
 
-        const jwtToken = jwt.sign({ username: user.userName }, privateKey, { expiresIn: '24h' });
+        const jwtToken = jwt.sign({ username: user.username }, privateKey, { expiresIn: '24h' });
         response.json({ jwtToken }).sendStatus(200)
     } catch (err) {
         if (err instanceof UserNotFoundError) {
@@ -35,7 +35,7 @@ export async function userLoginHandler(request: Request, response: Response) {
 
 export async function userSignUpHandler(request: Request, response: Response) {
     const { 
-        userName,
+        username,
         password,
         name,
         surname,
@@ -53,7 +53,7 @@ export async function userSignUpHandler(request: Request, response: Response) {
 
     // UserAlreadyExists exception can be thrown
     await getAppContext().getDBAccess().getUserAccess().addUser({
-        userName,
+        username,
         password,
         name,
         surname,
