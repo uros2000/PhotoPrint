@@ -24,5 +24,6 @@ jobs:
 
     - name: Build
       run: |
+        cd stampa_back
         npm install
         gulp
