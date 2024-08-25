@@ -110,7 +110,7 @@ export function destroyDBAccess() {
         console.log('Closed out remaining connections');
         process.exit(0);
       })
-      .catch(err => {
+      .catch((err: any) => {
         console.error('Error closing connections, forcing shutdown', err);
         process.exit(1);
       });
