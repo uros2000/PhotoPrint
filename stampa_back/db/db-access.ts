@@ -1,7 +1,6 @@
-import * as knex from "knex"
 import { DBAccessUser, DBAccessUserImpl } from "./user-db";
 
-export const knexAccess = knex({
+export const knexAccess = require('knex')({
     client: 'mysql',
     connection: {
         host : '127.0.0.1',
