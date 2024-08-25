@@ -14,4 +14,3 @@ CREATE TABLE user(
     city: VARCHAR(255),
     zip: INTEGER,
     phone: VARCHAR(31));
-    
