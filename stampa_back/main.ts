@@ -6,6 +6,7 @@ import { multerMiddleware, multiplePictureUpload } from './picture_handlers'
 import { destroyDBAccess } from './db/user-db'
 import { getAppContext } from './context'
 import * as dotenv from 'dotenv'
+import * as config from './config'
 
 dotenv.config()
 const app = express()
@@ -24,8 +25,9 @@ app.get('/myorders', notImplementedHandler)
 
 // POST PHOTOS
 
-app.post('/imageupload', multerMiddleware.array('pictures', 3), multiplePictureUpload)
-app.post('/photorequest', notImplementedHandler)
+app.post('/imageupload', multerMiddleware.array('pictures', config.MAX_PICTURE_UPLOAD_PER_REQUEST), multiplePictureUpload)
+
+app.post('/printrequest/photobatch', handlerFactory.getPhotoBatchPrintRequestHandler())
 
 
 // ADMIN PANEL

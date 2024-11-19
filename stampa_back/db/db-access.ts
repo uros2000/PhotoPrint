@@ -1,3 +1,4 @@
+import { DBAccessPrintRequest, DBAccessPrintRequestImpl } from "./printrequest-db";
 import { DBAccessUser, DBAccessUserImpl } from "./user-db";
 
 export const knexAccess = require('knex')({
@@ -12,10 +13,15 @@ export const knexAccess = require('knex')({
 
 export abstract class DBAccessFactory {
     abstract getUserAccess(): DBAccessUser
+    abstract getPrintRequestAccess(): DBAccessPrintRequest
 }
 
 export class DBAccessFactoryImpl extends DBAccessFactory {
     getUserAccess(): DBAccessUser {
         return new DBAccessUserImpl()
+    }
+
+    getPrintRequestAccess(): DBAccessPrintRequest {
+        return new DBAccessPrintRequestImpl()
     }
 }

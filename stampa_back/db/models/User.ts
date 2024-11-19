@@ -13,6 +13,7 @@ export interface UserWithCredentials extends User {
 export interface Address {
     street: string,
     streetNumber: string,
+    // TODO: Add apartment
     city: string,
     zip: string
 }
